@@ -260,6 +260,57 @@
     }
     .team-card:hover .linkedin-link { gap: 12px; }
 
+    .founder-stats {
+      display: flex;
+      gap: 24px;
+      padding: 16px 0;
+      border-top: 1px solid rgba(17,17,24,.08);
+      border-bottom: 1px solid rgba(17,17,24,.08);
+    }
+
+    .founder-stat {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+
+    .stat-value {
+      font-family: var(--font-d);
+      font-size: 1.3rem;
+      letter-spacing: -.03em;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    .stat-label {
+      font-size: .56rem;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+
+    .exp-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .exp-tag {
+      font-size: .58rem;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--text-2);
+      border: 1px solid rgba(17,17,24,.12);
+      border-radius: 2px;
+      padding: 4px 10px;
+    }
+
+    .exp-tag.highlight {
+      color: var(--accent);
+      border-color: rgba(196,125,32,.3);
+      background: rgba(196,125,32,.06);
+    }
+
     /* ── reveal ── */
     .reveal {
       opacity: 0;
@@ -355,7 +406,26 @@
           <div class="founder-role">Co-Founder</div>
           <h2>Shiwali Mohan</h2>
         </div>
-        <p>AI researcher and engineer focused on neuro-symbolic reasoning and building AI systems that are safe, explainable, and aligned with human intent.</p>
+        <p>AI scientist with an expertise in neuro-symbolic reasoning and building AI systems that are safe, explainable, and aligned with human intent.</p>
+        <div class="founder-stats">
+          <div class="founder-stat">
+            <span class="stat-value">$10M+</span>
+            <span class="stat-label">Research Portfolio</span>
+          </div>
+          <div class="founder-stat">
+            <span class="stat-value">50+</span>
+            <span class="stat-label">Peer-reviewed Papers</span>
+          </div>
+          <div class="founder-stat">
+            <span class="stat-value">10</span>
+            <span class="stat-label">Patents</span>
+          </div>
+        </div>
+        <div class="exp-tags">
+          <span class="exp-tag highlight">DARPA</span>
+          <span class="exp-tag">Xerox PARC</span>
+          <span class="exp-tag">Ph.D · U of Michigan</span>
+        </div>
         <div class="linkedin-link">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.2"/>
@@ -374,6 +444,21 @@
           <h2>Nate Derbinsky</h2>
         </div>
         <p>Expert in cognitive architectures and symbolic AI, with deep research experience building reasoning systems that generalize across complex, real-world domains.</p>
+        <div class="founder-stats">
+          <div class="founder-stat">
+            <span class="stat-value">40+</span>
+            <span class="stat-label">Publications</span>
+          </div>
+          <div class="founder-stat">
+            <span class="stat-value">3</span>
+            <span class="stat-label">Patents</span>
+          </div>
+        </div>
+        <div class="exp-tags">
+          <span class="exp-tag highlight">Cognitive Architectures</span>
+          <span class="exp-tag">Academia</span>
+          <span class="exp-tag">Ph.D · U of Michigan</span>
+        </div>
         <div class="linkedin-link">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.2"/>
@@ -392,6 +477,11 @@
           <h2>Parul Batra</h2>
         </div>
         <p>Product and go-to-market leader with a track record of bringing AI-powered platforms to enterprise scale, bridging technical depth with real customer value.</p>
+        <div class="exp-tags">
+          <span class="exp-tag highlight">Meesho</span>
+          <span class="exp-tag highlight">LinkedIn</span>
+          <span class="exp-tag">MBA · MIT</span>
+        </div>
         <div class="linkedin-link">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <rect x="1" y="1" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.2"/>
