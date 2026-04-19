@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>Polycog — Reasoning Infrastructure for Agents</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -62,7 +62,11 @@
       text-transform: lowercase;
       color: var(--text);
       text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
     }
+    .nav-logo svg { flex-shrink: 0; }
 
     nav ul {
       list-style: none;
@@ -743,37 +747,38 @@
       flex-direction: column;
       justify-content: center;
       gap: 5px;
-      width: 36px;
-      height: 36px;
+      width: 44px;
+      height: 44px;
       background: none;
       border: none;
-      padding: 4px;
+      padding: 0;
       z-index: 210;
+      -webkit-tap-highlight-color: transparent;
     }
     .nav-hamburger span {
       display: block;
-      height: 1.5px;
+      height: 2px;
       background: var(--text);
       border-radius: 2px;
       transition: transform .3s var(--ease), opacity .3s;
     }
-    .nav-hamburger.open span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+    .nav-hamburger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
     .nav-hamburger.open span:nth-child(2) { opacity: 0; }
-    .nav-hamburger.open span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+    .nav-hamburger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     /* ── mobile drawer ── */
     .nav-mobile {
       display: none;
       position: fixed;
-      inset: 60px 0 0;
-      background: rgba(247,245,242,.97);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
+      inset: calc(60px + env(safe-area-inset-top)) 0 0;
+      background: #F7F5F2;
       z-index: 190;
       flex-direction: column;
-      padding: 32px 28px;
+      padding: 28px 24px max(28px, env(safe-area-inset-bottom));
       gap: 0;
-      border-top: 1px solid rgba(123,47,190,.1);
+      border-top: 1px solid rgba(123,47,190,.12);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
       transform: translateY(-12px);
       opacity: 0;
       transition: transform .3s var(--ease), opacity .3s var(--ease);
@@ -804,11 +809,16 @@
 
     /* ── responsive ── */
     @media (max-width: 960px) {
-      nav { padding: 0 24px; }
+      nav {
+        padding: env(safe-area-inset-top) max(24px, env(safe-area-inset-right)) 0 max(24px, env(safe-area-inset-left));
+        height: calc(60px + env(safe-area-inset-top));
+        background: #F7F5F2;
+        border-bottom: 1px solid rgba(123,47,190,.18);
+      }
       nav ul { display: none; }
       .nav-hamburger { display: flex; }
       .nav-mobile { display: flex; }
-      #hero { padding: 100px 24px 80px; }
+      #hero { padding: calc(80px + env(safe-area-inset-top)) 24px 80px; }
       section { padding: 80px 24px; }
       .platform-header { flex-direction: column; align-items: flex-start; gap: 20px; }
       .platform-grid { grid-template-columns: 1fr; }
@@ -828,7 +838,24 @@
 
   <!-- Nav -->
   <nav>
-    <a href="#" class="nav-logo">polycog</a>
+    <a href="#" class="nav-logo">
+      <svg width="22" height="22" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="20,4 34.3,14.4 28.8,31.6 11.2,31.6 5.7,14.4" stroke="#7B2FBE" stroke-width="1.1" fill="none" stroke-opacity=".45"/>
+        <line x1="20" y1="20" x2="20"   y2="4"    stroke="#C47D20" stroke-width="1" stroke-opacity=".55"/>
+        <line x1="20" y1="20" x2="34.3" y2="14.4" stroke="#C47D20" stroke-width="1" stroke-opacity=".55"/>
+        <line x1="20" y1="20" x2="28.8" y2="31.6" stroke="#C47D20" stroke-width="1" stroke-opacity=".55"/>
+        <line x1="20" y1="20" x2="11.2" y2="31.6" stroke="#C47D20" stroke-width="1" stroke-opacity=".55"/>
+        <line x1="20" y1="20" x2="5.7"  y2="14.4" stroke="#C47D20" stroke-width="1" stroke-opacity=".55"/>
+        <circle cx="20"   cy="4"    r="2.2" stroke="#7B2FBE" stroke-width="1.1"/>
+        <circle cx="34.3" cy="14.4" r="2.2" stroke="#7B2FBE" stroke-width="1.1" stroke-opacity=".55"/>
+        <circle cx="28.8" cy="31.6" r="2.2" stroke="#7B2FBE" stroke-width="1.1" stroke-opacity=".55"/>
+        <circle cx="11.2" cy="31.6" r="2.2" stroke="#7B2FBE" stroke-width="1.1" stroke-opacity=".55"/>
+        <circle cx="5.7"  cy="14.4" r="2.2" stroke="#7B2FBE" stroke-width="1.1" stroke-opacity=".55"/>
+        <circle cx="20" cy="20" r="3.2" stroke="#C47D20" stroke-width="1.2"/>
+        <circle cx="20" cy="20" r="1.4" fill="#C47D20" fill-opacity=".75"/>
+      </svg>
+      polycog
+    </a>
     <ul>
       <li><a href="#platform">Platform</a></li>
       <li><a href="#how">How it works</a></li>
