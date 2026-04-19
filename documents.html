@@ -255,43 +255,6 @@
     .d2 { transition-delay: .16s; }
     .d3 { transition-delay: .24s; }
 
-    /* ── footer ── */
-    footer {
-      padding: 32px 48px;
-      border-top: 1px solid rgba(123,47,190,.1);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .foot-logo {
-      font-family: 'Poppins', sans-serif;
-      font-weight: 800;
-      font-size: 1rem;
-      letter-spacing: -.01em;
-      color: var(--text);
-      text-decoration: none;
-    }
-
-    .foot-links {
-      display: flex;
-      gap: 28px;
-    }
-    .foot-links a {
-      font-size: .62rem;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--text-3);
-      text-decoration: none;
-      transition: color .25s;
-    }
-    .foot-links a:hover { color: var(--text-2); }
-
-    .foot-copy {
-      font-size: .62rem;
-      color: var(--text-3);
-      letter-spacing: .06em;
-    }
 
     /* ── responsive ── */
     @media (max-width: 960px) {
@@ -419,18 +382,6 @@
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer>
-    <a href="index.html" class="foot-logo">polycog</a>
-    <div class="foot-links">
-      <a href="documents.html">Docs</a>
-      <a href="team.html">Team</a>
-      <a href="#">Privacy</a>
-      <a href="#">Terms</a>
-      <a href="mailto:hello@polycog.ai">Contact</a>
-    </div>
-    <div class="foot-copy">© 2026 Polycog, Inc.</div>
-  </footer>
 
   <script>
     const ro = new IntersectionObserver(entries=>{
