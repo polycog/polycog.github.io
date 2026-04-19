@@ -35,13 +35,7 @@
       color: var(--text);
       font-family: var(--font-m);
       overflow-x: hidden;
-      cursor: none;
     }
-
-    /* ── cursor ── */
-    #cur  { position:fixed;width:5px;height:5px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s; }
-    #curR { position:fixed;width:24px;height:24px;border:1px solid rgba(196,125,32,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .2s var(--ease),height .2s var(--ease); }
-    body:has(a:hover) #curR,body:has(button:hover) #curR { width:40px;height:40px; }
 
     /* ── nav ── */
     nav {
@@ -108,7 +102,6 @@
       border-radius: 2px;
       text-decoration: none;
       transition: background .25s, box-shadow .25s !important;
-      cursor: none;
     }
     .nav-btn::after { display: none !important; }
     .nav-btn:hover {
@@ -373,9 +366,6 @@
 </head>
 <body>
 
-  <div id="cur"></div>
-  <div id="curR"></div>
-
   <!-- Nav -->
   <nav>
     <a href="index.html" class="nav-logo">polycog</a>
@@ -510,12 +500,6 @@
   </footer>
 
   <script>
-    const cur = document.getElementById('cur');
-    const curR = document.getElementById('curR');
-    let mx=0,my=0,rx=0,ry=0;
-    document.addEventListener('mousemove',e=>{ mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
-    (function tick(){ rx+=(mx-rx)*.13; ry+=(my-ry)*.13; curR.style.left=rx+'px'; curR.style.top=ry+'px'; requestAnimationFrame(tick); })();
-
     const ro = new IntersectionObserver(entries=>{
       entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); } });
     },{ threshold: 0.08 });
