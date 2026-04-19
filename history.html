@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>History — Polycog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;1,300&family=Poppins:wght@800&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #F7F5F2;
+      --primary:   #3C096C;
+      --secondary: #7B2FBE;
+      --accent:    #C47D20;
+      --text:      #111118;
+      --text-2:    rgba(17,17,24,.55);
+      --text-3:    rgba(17,17,24,.35);
+      --card-bg:   rgba(255,255,255,.7);
+      --card-border: rgba(123,47,190,.14);
+      --card-hover-border: rgba(123,47,190,.32);
+      --glow-accent: rgba(196,125,32,.18);
+      --font-d: 'DM Serif Display', serif;
+      --font-m: 'JetBrains Mono', monospace;
+      --ease: cubic-bezier(.16,1,.3,1);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--font-m);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* ── cursor ── */
+    #cur  { position:fixed;width:5px;height:5px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s; }
+    #curR { position:fixed;width:24px;height:24px;border:1px solid rgba(196,125,32,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .2s var(--ease),height .2s var(--ease); }
+    body:has(a:hover) #curR,body:has(button:hover) #curR { width:40px;height:40px; }
+
+    /* ── nav ── */
+    nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 200;
+      padding: 0 48px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(247,245,242,.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(123,47,190,.1);
+    }
+
+    .nav-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -.01em;
+      text-transform: lowercase;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      align-items: center;
+      gap: 36px;
+    }
+
+    nav a {
+      font-size: .68rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text-2);
+      text-decoration: none;
+      position: relative;
+      padding-bottom: 2px;
+      transition: color .25s;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 1px;
+      background: var(--accent);
+      transition: width .3s var(--ease);
+    }
+    nav a:hover { color: var(--text); }
+    nav a:hover::after { width: 100%; }
+
+    .nav-btn {
+      font-family: var(--font-m);
+      font-size: .68rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent) !important;
+      border: 1px solid rgba(196,125,32,.35);
+      padding: 8px 18px;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: background .25s, box-shadow .25s !important;
+      cursor: none;
+    }
+    .nav-btn::after { display: none !important; }
+    .nav-btn:hover {
+      background: rgba(196,125,32,.08) !important;
+      box-shadow: 0 0 20px var(--glow-accent) !important;
+      color: var(--accent) !important;
+    }
+
+    /* ── page header ── */
+    .page-header {
+      padding: 140px 48px 80px;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .label {
+      font-size: .62rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+    .label::before {
+      content: '';
+      width: 20px; height: 1px;
+      background: var(--secondary);
+      flex-shrink: 0;
+    }
+
+    h1 {
+      font-family: var(--font-d);
+      font-weight: 800;
+      font-size: clamp(2.4rem, 4.5vw, 4rem);
+      letter-spacing: -.04em;
+      line-height: 1.0;
+      color: var(--text);
+      margin-bottom: 24px;
+    }
+
+    .page-lead {
+      font-size: .92rem;
+      font-weight: 300;
+      color: var(--text-2);
+      line-height: 1.9;
+      max-width: 640px;
+    }
+
+    /* ── traditions ── */
+    .traditions-section {
+      padding: 0 48px 140px;
+    }
+
+    .traditions-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .tradition {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 60px;
+      padding: 56px 0;
+      border-bottom: 1px solid rgba(123,47,190,.1);
+      align-items: start;
+    }
+    .tradition:first-child { border-top: 1px solid rgba(123,47,190,.1); }
+
+    .tradition-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      position: sticky;
+      top: 80px;
+    }
+
+    .tradition-num {
+      font-size: .58rem;
+      letter-spacing: .22em;
+      color: var(--secondary);
+      text-transform: uppercase;
+    }
+
+    .tradition-era {
+      font-size: .62rem;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--text-3);
+    }
+
+    .tradition h2 {
+      font-family: var(--font-d);
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: -.03em;
+      color: var(--text);
+      line-height: 1.2;
+    }
+
+    .tradition-names {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .tradition-name {
+      font-size: .68rem;
+      letter-spacing: .08em;
+      color: var(--accent);
+    }
+
+    .tradition-body {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .tradition-body p {
+      font-size: .82rem;
+      color: var(--text-2);
+      line-height: 1.95;
+      font-weight: 300;
+    }
+
+    .tradition-body p strong {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    .tradition-quote {
+      border-left: 2px solid rgba(123,47,190,.25);
+      padding: 12px 0 12px 24px;
+      font-family: var(--font-d);
+      font-style: italic;
+      font-size: 1.05rem;
+      color: var(--text);
+      line-height: 1.55;
+      letter-spacing: -.01em;
+    }
+
+    .tradition-connection {
+      margin-top: 8px;
+      padding: 20px 24px;
+      background: rgba(123,47,190,.05);
+      border: 1px solid rgba(123,47,190,.1);
+      border-radius: 3px;
+    }
+
+    .tradition-connection-label {
+      font-size: .56rem;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--secondary);
+      margin-bottom: 8px;
+    }
+
+    .tradition-connection p {
+      font-size: .76rem;
+      color: var(--text-2);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    /* ── closing ── */
+    .closing {
+      padding: 0 48px 120px;
+    }
+
+    .closing-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 4px;
+      position: relative;
+      overflow: hidden;
+    }
+    .closing-inner::before {
+      content: '';
+      position: absolute;
+      top: -80px; left: 50%;
+      transform: translateX(-50%);
+      width: 400px; height: 200px;
+      background: radial-gradient(ellipse, rgba(123,47,190,.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .closing-inner h2 {
+      font-family: var(--font-d);
+      font-weight: 700;
+      font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+      letter-spacing: -.03em;
+      color: var(--text);
+      margin-bottom: 20px;
+      line-height: 1.15;
+    }
+
+    .closing-inner p {
+      font-size: .82rem;
+      color: var(--text-2);
+      line-height: 1.95;
+      font-weight: 300;
+      max-width: 640px;
+    }
+
+    .closing-inner p strong {
+      color: var(--text);
+      font-weight: 400;
+    }
+
+    /* ── reveal ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .65s var(--ease), transform .65s var(--ease);
+    }
+    .reveal.in { opacity:1; transform:none; }
+    .d1 { transition-delay: .08s; }
+    .d2 { transition-delay: .16s; }
+    .d3 { transition-delay: .24s; }
+
+    /* ── footer ── */
+    footer {
+      padding: 32px 48px;
+      border-top: 1px solid rgba(123,47,190,.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .foot-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: -.01em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .foot-links {
+      display: flex;
+      gap: 28px;
+    }
+    .foot-links a {
+      font-size: .62rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--text-3);
+      text-decoration: none;
+      transition: color .25s;
+    }
+    .foot-links a:hover { color: var(--text-2); }
+
+    .foot-copy {
+      font-size: .62rem;
+      color: var(--text-3);
+      letter-spacing: .06em;
+    }
+
+    /* ── responsive ── */
+    @media (max-width: 960px) {
+      nav { padding: 0 24px; }
+      nav ul li:not(:last-child) { display: none; }
+      .page-header { padding: 100px 24px 60px; }
+      .traditions-section { padding: 0 24px 80px; }
+      .tradition { grid-template-columns: 1fr; gap: 28px; }
+      .tradition-meta { position: static; }
+      .closing { padding: 0 24px 80px; }
+      .closing-inner { padding: 36px 28px; }
+      footer { flex-direction: column; gap: 20px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div id="cur"></div>
+  <div id="curR"></div>
+
+  <!-- Nav -->
+  <nav>
+    <a href="index.html" class="nav-logo">polycog</a>
+    <ul>
+      <li><a href="index.html#platform">Platform</a></li>
+      <li><a href="index.html#how">How it works</a></li>
+      <li><a href="index.html#principles">Principles</a></li>
+      <li><a href="documents.html">Docs</a></li>
+      <li><a href="team.html">Team</a></li>
+      <li><a href="history.html">History</a></li>
+      <li><a href="index.html#cta" class="nav-btn">Get Access</a></li>
+    </ul>
+  </nav>
+
+  <!-- Page Header -->
+  <div class="page-header reveal">
+    <div class="label">Intellectual Heritage</div>
+    <h1>Polycog: orchestrating a polyphony of multiple forms of reasoning.</h1>
+    <p class="page-lead">Polycog is not a new idea — it is a continuation. The researchers who shaped our understanding of mind all arrived at the same conclusion: <strong>intelligence is not an algorithm. It is not a model. It is a system</strong> — structured components, interacting over explicit representations, producing behavior that is coherent, traceable, and trustworthy. We build in that tradition.</p>
+  </div>
+
+  <!-- Traditions -->
+  <div class="traditions-section">
+    <div class="traditions-inner">
+
+      <!-- Newell & Simon -->
+      <div class="tradition reveal">
+        <div class="tradition-meta">
+          <div class="tradition-num">01</div>
+          <div class="tradition-era">1950s – 1990s</div>
+          <h2>Cognitive Science &amp; Human Problem Solving</h2>
+          <div class="tradition-names">
+            <span class="tradition-name">Allen Newell</span>
+            <span class="tradition-name">Herbert A. Simon</span>
+          </div>
+        </div>
+        <div class="tradition-body">
+          <div class="tradition-quote">"The mind is a physical symbol system capable of having and manipulating symbolic representations of the world."</div>
+          <p>Allen Newell and Herbert Simon founded the scientific study of human problem solving. Their work on the <strong>General Problem Solver</strong> and the <strong>Physical Symbol System Hypothesis</strong> established that intelligence — whether human or artificial — operates through the manipulation of structured symbolic representations.</p>
+          <p>Simon's Nobel Prize-winning work on <strong>bounded rationality</strong> showed that human decision-making is not rigorous optimization but structured search within cognitive constraints. Humans don't compute the globally optimal answer — we reason through a problem space, applying heuristics, pruning branches, and arriving at solutions that are good enough given our knowledge and time.</p>
+          <p>This insight is foundational to Polycog. Our agents don't brute-force solutions — they reason through a structured problem space defined by domain knowledge, just as Newell and Simon described human experts operating in their fields.</p>
+          <div class="tradition-connection">
+            <div class="tradition-connection-label">How it shapes Polycog</div>
+            <p>Our orchestration layer is a direct descendant of problem-space theory. Agents decompose tasks into subproblems, apply decision-making theories to focus attention, and reason within subproblems — mirroring the cognitive architecture Newell and Simon mapped in human experts.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Minsky & McCarthy -->
+      <div class="tradition reveal d1">
+        <div class="tradition-meta">
+          <div class="tradition-num">02</div>
+          <div class="tradition-era">1950s – 1980s</div>
+          <h2>Symbolic Reasoning &amp; the Architecture of Mind</h2>
+          <div class="tradition-names">
+            <span class="tradition-name">Marvin Minsky</span>
+            <span class="tradition-name">John McCarthy</span>
+          </div>
+        </div>
+        <div class="tradition-body">
+          <div class="tradition-quote">"The power of a symbol is that it allows us to treat a very complex thing as though it were a simple one."</div>
+          <p>John McCarthy coined the term <strong>artificial intelligence</strong> and pioneered the use of formal logic as the language of machine reasoning. His work on <strong>situation calculus</strong> and <strong>non-monotonic reasoning</strong> established that intelligent systems could represent and reason about the world using structured symbolic formalisms — a rigorous alternative to pattern-matching alone.</p>
+          <p>Marvin Minsky's theory of <strong>frames</strong> and the <strong>Society of Mind</strong> proposed that intelligence emerges not from a single monolithic process, but from the interaction of many smaller, specialized reasoning systems — each operating with structured knowledge representation and identified objectives. Intelligence, Minsky argued, is inherently compositional.</p>
+          <p>Together, their work gave us the vocabulary for thinking about knowledge representation, inference, and the structure of intelligent systems. The field moved on — but the core insight that <strong>explicit symbolic structure enables reliable, explainable reasoning</strong> never went away. It went underground, and now it's back.</p>
+          <div class="tradition-connection">
+            <div class="tradition-connection-label">How it shapes Polycog</div>
+            <p>Our neuro-symbolic reasoning approach is grounded in insights developed by McCarthy and Minsky. We represent domain knowledge as structured graphs of concepts, relations, and constraints — giving agents the symbolic scaffolding they need to reason reliably, not just predict fluently.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kahneman -->
+      <div class="tradition reveal d2">
+        <div class="tradition-meta">
+          <div class="tradition-num">03</div>
+          <div class="tradition-era">1970s – Present</div>
+          <h2>Human Behavior &amp; Decision Making</h2>
+          <div class="tradition-names">
+            <span class="tradition-name">Daniel Kahneman</span>
+          </div>
+        </div>
+        <div class="tradition-body">
+          <div class="tradition-quote">"The division of labor between System 1 and System 2 is highly efficient: it minimizes effort and optimizes performance"</div>
+          <p>Daniel Kahneman's landmark research on <strong>dual-process theory</strong> revealed a fundamental truth about intelligence: fast, intuitive thinking (System 1) and slow, deliberate reasoning (System 2) are not competing modes — they are complementary, and the most reliable judgment comes from knowing which to engage and when.</p>
+          <p>Kahneman demonstrated that human decision-making is systematically shaped by <strong>heuristics, framing, and context</strong> — and that the same structural forces apply whenever an intelligent system must act under uncertainty. Trustworthy decisions require not just information, but a principled reasoning process that is transparent and auditable.</p>
+          <p>His framework challenges AI builders directly: a system that produces outputs without exposing its reasoning process cannot be trusted, debugged, or improved. The black box is not a feature — it is a liability.</p>
+          <div class="tradition-connection">
+            <div class="tradition-connection-label">How it shapes Polycog</div>
+            <p>Polycog's observability and explainability layer is Kahneman's insight made operational. Every agent decision is traceable — not just what was decided, but the reasoning chain that produced it. Our causal manifest surfaces the "System 2" reasoning that justifies each action, making agent behavior auditable and improvable.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Closing -->
+  <div class="closing">
+    <div class="closing-inner reveal">
+      <div class="label">The Thread</div>
+      <h2>Intelligence is not one model.<br/>It is a system.</h2>
+      <p>Newell and Simon, Minsky and McCarthy, Kahneman — each arrived at the same conclusion from a different direction: <strong>reliable intelligence emerges from structured, interacting components</strong>, not from a single process running alone. Fifty years of cognitive architecture research — Soar, ACT-R, CLARION — proved it could be built.</p>
+      <p><strong>Polycog</strong> takes its name from <strong>polyphony</strong> — music where independent voices combine into something no single note could produce. The beauty is not in the soloist. It is in the system.</p>
+      <p><strong>We are bringing those ideas to market</strong> — as composable primitives, declarative orchestration, and full causal traceability. Not a research prototype. A system built, from the ground up, on the principle that intelligence is what happens when structured components reason together.</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <a href="index.html" class="foot-logo">polycog</a>
+    <div class="foot-links">
+      <a href="documents.html">Docs</a>
+      <a href="team.html">Team</a>
+      <a href="history.html">History</a>
+      <a href="#">Privacy</a>
+      <a href="#">Terms</a>
+      <a href="mailto:hello@polycog.ai">Contact</a>
+    </div>
+    <div class="foot-copy">© 2026 Polycog, Inc.</div>
+  </footer>
+
+  <script>
+    const cur = document.getElementById('cur');
+    const curR = document.getElementById('curR');
+    let mx=0,my=0,rx=0,ry=0;
+    document.addEventListener('mousemove',e=>{ mx=e.clientX; my=e.clientY; cur.style.left=mx+'px'; cur.style.top=my+'px'; });
+    (function tick(){ rx+=(mx-rx)*.13; ry+=(my-ry)*.13; curR.style.left=rx+'px'; curR.style.top=ry+'px'; requestAnimationFrame(tick); })();
+
+    const ro = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); } });
+    },{ threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+  </script>
+</body>
+</html>
