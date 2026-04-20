@@ -323,6 +323,26 @@
     .d3 { transition-delay: .24s; }
 
 
+    /* ── advisors ── */
+    .advisors-section {
+      padding: 0 48px 120px;
+    }
+
+    .advisors-header {
+      max-width: 1200px;
+      margin: 0 auto 40px;
+      padding-top: 60px;
+      border-top: 1px solid rgba(123,47,190,.1);
+    }
+
+    .advisors-grid {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
     /* ── responsive ── */
     @media (max-width: 960px) {
       nav {
@@ -335,6 +355,8 @@
       .page-header { padding: calc(80px + env(safe-area-inset-top)) 24px 60px; }
       .team-section { padding: 0 24px 80px; }
       .team-grid { grid-template-columns: 1fr; }
+      .advisors-section { padding: 0 24px 80px; }
+      .advisors-grid { grid-template-columns: 1fr; }
       footer { flex-direction: column; gap: 20px; text-align: center; }
     }
   </style>
@@ -375,7 +397,7 @@
   <div class="page-header reveal">
     <div class="label">Team</div>
     <h1>The founders</h1>
-    <p class="page-lead">We're researchers, engineers, and business leaders who believe the next frontier of AI isn't capability — it's trustworthiness.</p>
+    <p class="page-lead">We're scientists and engineers who believe the next frontier of AI isn't capability — it's trustworthiness.</p>
   </div>
 
   <!-- Team Grid -->
@@ -452,10 +474,21 @@
         </div>
       </a>
 
-      <a href="https://www.linkedin.com/in/parulbatra/" target="_blank" rel="noopener noreferrer" class="team-card reveal d3">
+    </div>
+  </div>
+
+  <!-- Advisors Section -->
+  <div class="advisors-section">
+    <div class="advisors-header reveal">
+      <div class="label">Advisors</div>
+      <h2 style="font-family:var(--font-d);font-size:clamp(1.6rem,3vw,2.4rem);letter-spacing:-.03em;color:var(--text);">Our advisors</h2>
+    </div>
+    <div class="advisors-grid">
+
+      <a href="https://www.linkedin.com/in/parulbatra/" target="_blank" rel="noopener noreferrer" class="team-card reveal d1">
         <div class="founder-avatar"><span class="founder-initials">PB</span></div>
         <div>
-          <div class="founder-role">Co-Founder</div>
+          <div class="founder-role">Advisor</div>
           <h2>Parul Batra</h2>
         </div>
         <p>Product and go-to-market leader with a track record of bringing AI-powered platforms to enterprise scale, bridging technical depth with real customer value.</p>
@@ -475,9 +508,30 @@
         </div>
       </a>
 
+      <a href="https://laird.engin.umich.edu/" target="_blank" rel="noopener noreferrer" class="team-card reveal d2">
+        <div class="founder-avatar"><span class="founder-initials">JL</span></div>
+        <div>
+          <div class="founder-role">Advisor</div>
+          <h2>John E. Laird</h2>
+        </div>
+        <p>Pioneer of cognitive architectures and creator of Soar, a foundational architecture for general AI that integrates reasoning, planning, and learning. John L. Tishman Professor Emeritus of Engineering at the University of Michigan.</p>
+        <div class="exp-tags">
+          <span class="exp-tag">Soar</span>
+          <span class="exp-tag">U of Michigan</span>
+          <span class="exp-tag highlight">Ph.D · CMU</span>
+        </div>
+        <div class="linkedin-link">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <rect x="0.5" y="0.5" width="13" height="13" rx="2" stroke="currentColor" stroke-width="1.2"/>
+            <circle cx="7" cy="5" r="1.5" stroke="currentColor" stroke-width="1.1"/>
+            <path d="M4 11c0-1.66 1.34-3 3-3s3 1.34 3 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+          </svg>
+          Website
+        </div>
+      </a>
+
     </div>
   </div>
-
 
   <script>
     const ro = new IntersectionObserver(entries=>{
