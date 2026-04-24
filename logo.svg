@@ -26,13 +26,13 @@
      inkscape:deskcolor="#d1d1d1"
      inkscape:zoom="3.6769553"
      inkscape:cx="111.77726"
-     inkscape:cy="69.758804"
+     inkscape:cy="69.758803"
      inkscape:window-width="1816"
      inkscape:window-height="940"
      inkscape:window-x="53"
-     inkscape:window-y="118"
+     inkscape:window-y="90"
      inkscape:window-maximized="0"
-     inkscape:current-layer="svg11" />
+     inkscape:current-layer="g13" />
   <!-- Pentagon outline -->
   <!-- Spokes: center → each vertex -->
   <!-- Vertex nodes -->
@@ -40,14 +40,6 @@
   <g
      id="g13"
      transform="translate(-51.401224,1.3598211)">
-    <ellipse
-       style="fill:#ffffff;fill-opacity:0.994565;stroke-width:1.06318"
-       id="path11"
-       cx="68.600357"
-       cy="26.566103"
-       rx="19.576002"
-       ry="19.314983"
-       transform="matrix(0.99380915,-0.11110076,0.11589745,0.99326118,0,0)" />
     <g
        id="g12"
        inkscape:transform-center-x="-0.27196384"
