@@ -1133,14 +1133,40 @@
     document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
     // CTA form
+    const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyCftPYXUp-bEFzUTkOEZLBiHutz5wW1PrjXeIzP2jakop_sZIe2gBGmZE4tZvdQ23l/exec';
+
     function handleSubmit(e){
       e.preventDefault();
-      const val = document.getElementById('email-input').value.trim();
+      const input = document.getElementById('email-input');
+      const val = input.value.trim();
       const msg = document.getElementById('form-msg');
+      const btn = e.target.querySelector('.cta-submit');
+
       if(!val.includes('@')){ msg.style.color='#f87171'; msg.textContent='Please enter a valid email address.'; return; }
-      msg.style.color='var(--accent)';
-      msg.textContent='→ Received. We\'ll be in touch shortly.';
-      document.getElementById('email-input').value='';
+
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      msg.textContent = '';
+
+      fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'email=' + encodeURIComponent(val)
+      })
+      .then(() => {
+        msg.style.color = 'var(--accent)';
+        msg.textContent = '→ Received. We\'ll be in touch shortly.';
+        input.value = '';
+        btn.disabled = false;
+        btn.textContent = 'Request Access';
+      })
+      .catch(() => {
+        msg.style.color = '#f87171';
+        msg.textContent = 'Something went wrong. Please try again.';
+        btn.disabled = false;
+        btn.textContent = 'Request Access';
+      });
     }
   </script>
 </body>
