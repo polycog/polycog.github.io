@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-EPN29KP695"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-EPN29KP695');
+    </script>
+
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+
+    <title>Polycog &mdash; Documents</title>
+
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png" />
+    <link rel="manifest" href="images/site.webmanifest" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Quicksand:wght@300;400;500;600&family=Poppins:wght@800&display=swap" rel="stylesheet" />
+
+    <link rel="stylesheet" href="css/variables.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <style>
+        /* docs grid */
+        .docs-section {
+          padding: 0 48px 120px;
+        }
+
+        .docs-grid {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 20px;
+        }
+
+        .doc-card {
+          background: var(--card-bg);
+          border: 1px solid var(--card-border);
+          border-radius: 4px;
+          padding: 44px 40px;
+          display: flex;
+          flex-direction: column;
+          gap: 24px;
+          text-decoration: none;
+          color: inherit;
+          transition: border-color .3s, box-shadow .3s, transform .3s var(--ease);
+          position: relative;
+          overflow: hidden;
+        }
+        .doc-card::before {
+          content: '';
+          position: absolute;
+          top: 0; left: 0; right: 0;
+          height: 1px;
+          background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+          opacity: 0;
+          transition: opacity .35s;
+        }
+        .doc-card:hover::before { opacity: 1; }
+        .doc-card:hover {
+          border-color: var(--card-hover-border);
+          box-shadow: 0 8px 48px rgba(123,47,190,.1), 0 2px 12px rgba(0,0,0,.08);
+          transform: translateY(-3px);
+        }
+
+        .doc-icon {
+          width: 44px; height: 44px;
+          color: var(--secondary);
+          flex-shrink: 0;
+        }
+
+        .doc-type {
+          font-size: .58rem;
+          letter-spacing: .2em;
+          text-transform: uppercase;
+          color: var(--secondary);
+        }
+
+        .doc-card h2 {
+          font-family: var(--font-d);
+          font-weight: 700;
+          font-size: 1.2rem;
+          letter-spacing: -.025em;
+          color: var(--text);
+          line-height: 1.25;
+        }
+
+        .doc-card p {
+          font-size: .78rem;
+          color: var(--text-2);
+          line-height: 1.85;
+          font-weight: 300;
+          flex: 1;
+        }
+
+        .doc-link {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          font-size: .68rem;
+          letter-spacing: .1em;
+          text-transform: uppercase;
+          color: var(--accent);
+          padding-top: 16px;
+          border-top: 1px solid rgba(17,17,24,.08);
+          transition: gap .25s var(--ease);
+        }
+        .doc-card:hover .doc-link { gap: 12px; }
+
+        /* responsive */
+        @media (max-width: 960px) {
+          .docs-section { padding: 0 24px 80px; }
+          .docs-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+
+
+    <style>
+      /* reveal */
+      .reveal {
+          opacity: 0;
+          transform: translateY(24px);
+          transition: opacity .65s var(--ease), transform .65s var(--ease);
+      }
+      .reveal.in { opacity:1; transform:none; }
+      .d1 { transition-delay: .08s; }
+      .d2 { transition-delay: .16s; }
+      .d3 { transition-delay: .24s; }
+      .d4 { transition-delay: .32s; }
+    </style>
+  </head>
+  <body>
+    <!-- Nav -->
+    <nav>
+      <a href="index.html" class="nav-logo">
+        <img src="images/logo.svg" width="24" height="24" alt="" />
+        polycog
+      </a>
+      <ul>
+        <li><a href="index.html#platform">Platform</a></li><li><a href="index.html#how">How It Works</a></li><li><a href="index.html#principles">Principles</a></li><li><a href="docs.html">Docs</a></li><li><a href="team.html">Team</a></li><li><a href="index.html#cta" class="nav-btn">Get Access</a></li>
+      </ul>
+      <button class="nav-hamburger" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+
+    <!-- Mobile nav drawer -->
+    <div class="nav-mobile" id="navMobile">
+      <a href="index.html#platform" class="nav-mobile-link">Platform</a><a href="index.html#how" class="nav-mobile-link">How It Works</a><a href="index.html#principles" class="nav-mobile-link">Principles</a><a href="docs.html" class="nav-mobile-link">Docs</a><a href="team.html" class="nav-mobile-link">Team</a><a href="index.html#cta" class="nav-btn">Get Access</a>
+    </div>
+    
+    <div class="page-header reveal">
+        <div class="label">Documents</div>
+        <h1>Research &amp; Resources</h1>
+        <p class="page-lead">
+            Technical foundations, market context, and presentation materials behind the Polycog reasoning infrastructure.
+            
+        </p>
+    </div>
+
+    <div class="docs-section">
+        <div class="docs-grid">
+
+            
+
+            <!-- Technical Whitepaper -->
+            
+            
+            <a href="https://docs.google.com/document/d/1OdHwgNzc8pfVcO0qkOSffF3mN3HdvZKlCFh6Kqi52hw/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="doc-card reveal d1">
+                <svg class="doc-icon" viewBox="0 0 44 44" fill="none">
+                    
+            
+                <rect x="8" y="4" width="28" height="36" rx="2" stroke="currentColor" stroke-width="1.1"/>
+                <line x1="14" y1="14" x2="30" y2="14" stroke="currentColor" stroke-width="1.1" stroke-opacity=".5"/>
+                <line x1="14" y1="20" x2="30" y2="20" stroke="currentColor" stroke-width="1.1" stroke-opacity=".5"/>
+                <line x1="14" y1="26" x2="24" y2="26" stroke="currentColor" stroke-width="1.1" stroke-opacity=".5"/>
+                <circle cx="34" cy="34" r="7" fill="var(--bg)" stroke="currentColor" stroke-width="1.1"/>
+                <path d="M31 34h6M34 31v6" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"/>
+            
+            
+                </svg>
+                <div class="doc-type">Technical Whitepaper</div>
+                <h2>Reasoning Infrastructure for AI Agents</h2>
+                <p>
+                    
+            
+                A deep-dive into Polycog's architecture &mdash; composable reasoning primitives, causal orchestration, and the design principles behind explainable, safe autonomous agents.
+            
+            
+                </p>
+                <div class="doc-link">
+                    Read paper
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Slide Deck -->
+            
+            
+            <a href="https://docs.google.com/presentation/d/1tJq3_-h5HXG_YHy3NParuSQXu65wdVKG5vwChfhQrRU/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="doc-card reveal d2">
+                <svg class="doc-icon" viewBox="0 0 44 44" fill="none">
+                    
+            
+                <rect x="4" y="8" width="36" height="26" rx="2" stroke="currentColor" stroke-width="1.1"/>
+                <line x1="22" y1="34" x2="22" y2="40" stroke="currentColor" stroke-width="1.1" stroke-opacity=".5"/>
+                <line x1="15" y1="40" x2="29" y2="40" stroke="currentColor" stroke-width="1.1" stroke-opacity=".5"/>
+                <rect x="10" y="14" width="12" height="10" rx="1" stroke="currentColor" stroke-width="1.1" stroke-opacity=".5"/>
+                <line x1="26" y1="16" x2="34" y2="16" stroke="currentColor" stroke-width="1.1" stroke-opacity=".4"/>
+                <line x1="26" y1="20" x2="34" y2="20" stroke="currentColor" stroke-width="1.1" stroke-opacity=".4"/>
+                <line x1="26" y1="24" x2="31" y2="24" stroke="currentColor" stroke-width="1.1" stroke-opacity=".4"/>
+            
+            
+                </svg>
+                <div class="doc-type">Slide Deck</div>
+                <h2>Polycog Platform Overview</h2>
+                <p>
+                    
+            
+                A concise visual walkthrough of the Polycog platform &mdash; the problem we solve, how our reasoning layer works, and what it means to build agents that earn trust.
+            
+            
+                </p>
+                <div class="doc-link">
+                    View slides
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </a>
+
+            <!-- Slide Deck -->
+            
+            
+            <a href="https://docs.google.com/document/d/1xGQ7erFKuFmJtZq50rcIYYeDqBl1yWP5VyXg0uR-Hv4/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="doc-card reveal d3">
+                <svg class="doc-icon" viewBox="0 0 44 44" fill="none">
+                    
+            
+                <polyline points="6,34 16,22 24,28 34,12 38,16" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <circle cx="16" cy="22" r="2" fill="currentColor" fill-opacity=".6"/>
+                <circle cx="24" cy="28" r="2" fill="currentColor" fill-opacity=".6"/>
+                <circle cx="34" cy="12" r="2" fill="currentColor" fill-opacity=".6"/>
+                <line x1="6" y1="38" x2="38" y2="38" stroke="currentColor" stroke-width="1.1" stroke-opacity=".3"/>
+                <line x1="6" y1="6"  x2="6"  y2="38" stroke="currentColor" stroke-width="1.1" stroke-opacity=".3"/>
+            
+            
+                </svg>
+                <div class="doc-type">Market Analysis</div>
+                <h2>The Case for Improved Reasoning Infrastructure</h2>
+                <p>
+                    
+            
+                An analysis of the growing enterprise demand for explainable, auditable AI agents &mdash; and why reasoning is the critical missing layer in today's AI stacks.
+            
+            
+                </p>
+                <div class="doc-link">
+                    Read analysis
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                        <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+            </a>
+
+        </div>
+    </div>
+
+  
+    <footer>
+      <a href="index.html" class="foot-logo">
+        <img src="images/logo.svg" width="20" height="20" alt="" />
+        polycog
+      </a>
+      <div class="foot-copy">© 2026 POLYCOG, INC.</div>
+    </footer>
+    
+    <script>
+      // Mobile nav toggle
+      const navToggle = document.getElementById('navToggle');
+      const navMobile = document.getElementById('navMobile');
+      navToggle.addEventListener('click', () => {
+        const open = navMobile.classList.toggle('open');
+        navToggle.classList.toggle('open', open);
+        navToggle.setAttribute('aria-expanded', open);
+      });
+      navMobile.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => {
+          navMobile.classList.remove('open');
+          navToggle.classList.remove('open');
+          navToggle.setAttribute('aria-expanded', false);
+        });
+      });
+
+      // Scroll reveal
+      const ro = new IntersectionObserver(entries=>{
+        entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target); } });
+      },{ threshold: 0.08 });
+      document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+      //
+    </script>
+  </body>
+</html>
