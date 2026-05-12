@@ -226,36 +226,66 @@
         }
 
         /* marquee */
-        .marquee-wrap {
+        .marquee {
           border-top: 1px solid rgba(123,47,190,.1);
           border-bottom: 1px solid rgba(123,47,190,.1);
-          overflow: hidden;
-          padding: 16px 0;
           background: rgba(123,47,190,.05);
-        }
-        .marquee-track {
+
+          --gap: 1rem;
+          position: relative;
           display: flex;
-          gap: 0;
-          animation: marquee 28s linear infinite;
-          white-space: nowrap;
-          width: max-content;
+          overflow: hidden;
+          user-select: none;
+          gap: var(--gap);
+
+          padding: 16px 0;
         }
-        .marquee-item {
-          display: inline-flex;
-          align-items: center;
-          gap: 100px;
+
+        .marquee__content {
+          list-style-type: none;
+
+          flex-shrink: 0;
+          display: flex;
+          justify-content: space-around;
+          gap: var(--gap);
+          min-width: 100%;
+        }
+
+        .marquee__content > li {
+          flex: 0 0 auto;
+          text-align: center;
+          margin: 2px;
+
           padding: 0 40px;
           font-size: .62rem;
           letter-spacing: .18em;
           text-transform: uppercase;
           color: var(--text-3);
         }
-        .marquee-item::after {
-          content: '·';
+
+        .marquee__content > .marquee__buffer {
           color: var(--secondary);
           font-size: .9rem;
         }
-        @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+
+        @keyframes scroll {
+          from {
+            transform: translateX(0);
+          }
+          to {
+            transform: translateX(calc(-100% - var(--gap)));
+          }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .marquee__content {
+            animation-play-state: paused !important;
+          }
+        }
+
+        .marquee__content {
+          animation: scroll 42s linear infinite;
+        }
 
         /* platform */
         #platform { background: var(--bg); }
@@ -635,34 +665,45 @@
     </section>
 
     
-    <div class="marquee-wrap">
-        <div class="marquee-track">
+
+    <div class="marquee">
+      <ul class="marquee__content">
         
-            
-            <span class="marquee-item">Neuro-Symbolic Reasoning</span>
-            
-            <span class="marquee-item">Problem-space Orchestration</span>
-            
-            <span class="marquee-item">Decision Traceability</span>
-            
-            <span class="marquee-item">Safety Constraints</span>
-            
-            <span class="marquee-item">Causal Provenance</span>
-            
+        <li>Neuro-Symbolic Reasoning</li>
+        <li class="marquee__buffer">·</li>
         
-            
-            <span class="marquee-item">Neuro-Symbolic Reasoning</span>
-            
-            <span class="marquee-item">Problem-space Orchestration</span>
-            
-            <span class="marquee-item">Decision Traceability</span>
-            
-            <span class="marquee-item">Safety Constraints</span>
-            
-            <span class="marquee-item">Causal Provenance</span>
-            
+        <li>Problem-space Orchestration</li>
+        <li class="marquee__buffer">·</li>
         
-        </div>
+        <li>Decision Traceability</li>
+        <li class="marquee__buffer">·</li>
+        
+        <li>Safety Constraints</li>
+        <li class="marquee__buffer">·</li>
+        
+        <li>Causal Provenance</li>
+        <li class="marquee__buffer">·</li>
+        
+      </ul>
+
+      <ul class="marquee__content" aria-hidden="true">
+        
+        <li>Neuro-Symbolic Reasoning</li>
+        <li class="marquee__buffer">·</li>
+        
+        <li>Problem-space Orchestration</li>
+        <li class="marquee__buffer">·</li>
+        
+        <li>Decision Traceability</li>
+        <li class="marquee__buffer">·</li>
+        
+        <li>Safety Constraints</li>
+        <li class="marquee__buffer">·</li>
+        
+        <li>Causal Provenance</li>
+        <li class="marquee__buffer">·</li>
+        
+      </ul>
     </div>
 
     <section id="platform">
