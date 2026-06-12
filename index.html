@@ -198,6 +198,91 @@
         .btn-ghost .arr { transition: transform .25s var(--ease); }
         .btn-ghost:hover .arr { transform: translateX(4px); }
 
+        .btn-demo {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          font-family: var(--font-m);
+          font-size: .72rem;
+          letter-spacing: .1em;
+          text-transform: uppercase;
+          color: var(--text-2);
+          background: transparent;
+          border: 1px solid rgba(17,17,24,.15);
+          padding: 13px 22px;
+          border-radius: 2px;
+          cursor: pointer;
+          transition: color .25s, border-color .25s, box-shadow .25s;
+        }
+        .btn-demo:hover {
+          color: var(--text);
+          border-color: rgba(123,47,190,.35);
+          box-shadow: 0 0 20px rgba(123,47,190,.08);
+        }
+        .btn-demo .play-icon { flex-shrink: 0; transition: transform .25s var(--ease); }
+        .btn-demo:hover .play-icon { transform: scale(1.15); }
+
+        /* video modal */
+        .video-modal {
+          display: none;
+          position: fixed;
+          inset: 0;
+          z-index: 1000;
+          background: rgba(8,8,12,.82);
+          backdrop-filter: blur(6px);
+          -webkit-backdrop-filter: blur(6px);
+          align-items: center;
+          justify-content: center;
+          padding: 24px;
+        }
+        .video-modal.open { display: flex; }
+
+        .video-modal-inner {
+          position: relative;
+          width: 95vw;
+          height: 95vh;
+          background: #0e0e16;
+          border: 1px solid rgba(123,47,190,.2);
+          border-radius: 6px;
+          overflow: hidden;
+          box-shadow: 0 24px 80px rgba(0,0,0,.6), 0 0 60px rgba(123,47,190,.12);
+          animation: modalIn .3s var(--ease) forwards;
+        }
+        @keyframes modalIn {
+          from { opacity:0; transform: scale(.96) translateY(16px); }
+          to   { opacity:1; transform: none; }
+        }
+
+        .video-modal-close {
+          position: absolute;
+          top: 12px; right: 12px;
+          z-index: 10;
+          width: 32px; height: 32px;
+          background: rgba(255,255,255,.08);
+          border: 1px solid rgba(255,255,255,.12);
+          border-radius: 50%;
+          color: rgba(255,255,255,.7);
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: background .2s, color .2s;
+        }
+        .video-modal-close:hover { background: rgba(255,255,255,.16); color: #fff; }
+
+        .video-ratio {
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
+        .video-ratio iframe {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          border: none;
+        }
+
         .hero-caps {
           margin-top: 64px;
           display: flex;
@@ -369,6 +454,22 @@
           opacity: .8;
           padding-top: 16px;
           border-top: 1px solid rgba(17,17,24,.08);
+        }
+
+        .plat-impact {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin: -40px -36px 0;
+          padding: 14px 36px;
+          background: rgba(123,47,190,.07);
+          border-bottom: 1px solid rgba(123,47,190,.14);
+          font-family: var(--font-m);
+          font-size: .68rem;
+          font-weight: 500;
+          letter-spacing: .12em;
+          text-transform: uppercase;
+          color: var(--secondary);
         }
 
         /* how */
@@ -628,7 +729,7 @@
             <h1>Build trustworthy <br/>agents that <em>think &nbsp;</em></h1>
 
             <p class="hero-sub">
-                Polycog provides the <strong>reasoning infrastructure</strong> for agents —
+                Polycog builds the <strong>reasoning infrastructure</strong> for agents &mdash;
                 composable neuro-symbolic reasoning primitives, orchestration directives,
                 and built-in <strong>observability, explainability, & safety</strong>
             </p>
@@ -640,10 +741,19 @@
                     <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 </a>
-                <a href="#platform" class="btn-ghost">
+
+                <!-- <a href="#platform" class="btn-ghost">
                 Explore the platform
                 <span class="arr">→</span>
-                </a>
+                </a> -->
+
+                <button class="btn-demo" id="watchDemoBtn">
+                  <svg class="play-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/>
+                      <path d="M6.5 5.5l4 2.5-4 2.5V5.5z" fill="currentColor"/>
+                  </svg>
+                  Watch Demo
+                </button>
             </div>
 
             
@@ -728,6 +838,7 @@
             
             
             <div class="plat-card reveal d1">
+                <div class="plat-impact">Reliable reasoning.</div>
                 <div class="plat-num">01</div>
                 <svg class="plat-icon" viewBox="0 0 40 40" fill="none">
                     
@@ -743,7 +854,7 @@
                 </svg>
                 <h3>Neuro-Symbolic Primitives</h3>
                 <p>
-                    Composable reasoning building blocks that combine neural inference with symbolic logic. Agents that reason about rules, relationships, and constraints &mdash; not just pattern-match on tokens.
+                    Composable building blocks that combine neural inference with logical reasoning. Agents reason about rules, relationships, and constraints &mdash; not just pattern-match on tokens.
                 </p>
                 <div class="plat-tag">
                     Relations · Constraints · Logic
@@ -753,6 +864,7 @@
             
             
             <div class="plat-card reveal d2">
+                <div class="plat-impact">Steerable operation.</div>
                 <div class="plat-num">02</div>
                 <svg class="plat-icon" viewBox="0 0 40 40" fill="none">
                     
@@ -776,6 +888,7 @@
             
             
             <div class="plat-card reveal d3">
+                <div class="plat-impact">Observable, explainable, and safe.</div>
                 <div class="plat-num">03</div>
                 <svg class="plat-icon" viewBox="0 0 40 40" fill="none">
                     
@@ -783,9 +896,9 @@
                 <path d="M14 20 L18 24 L26 16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             
                 </svg>
-                <h3>Observability, Explainability &amp; Safety</h3>
+                <h3>Causal Provenance</h3>
                 <p>
-                    Every decision causally determined, traced, and explainable. Built-in safety constraints prevent out-of-bound behavior before it happens. Audit any agent action with full causal provenance.
+                    Every decision causally determined and traced. Audit any agent decision with a deterministic lineage of data and knowledge. Ensure agents do not take unauthorized action.
                 </p>
                 <div class="plat-tag">
                     Causal · Explainable · Safe
@@ -934,6 +1047,20 @@
       </div>
     </section>
 
+    <!-- Video demo modal -->
+    <div class="video-modal" id="videoModal" role="dialog" aria-modal="true" aria-label="Demo video">
+      <div class="video-modal-inner">
+        <button class="video-modal-close" id="videoModalClose" aria-label="Close video">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M1 1l12 12M13 1L1 13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+          </svg>
+        </button>
+        <div class="video-ratio">
+          <iframe id="demoIframe" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
   
     <footer>
       <a href="index.html" class="foot-logo">
@@ -967,6 +1094,29 @@
       document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
       //
+      // Demo video modal
+      const watchDemoBtn = document.getElementById('watchDemoBtn');
+      const videoModal   = document.getElementById('videoModal');
+      const videoClose   = document.getElementById('videoModalClose');
+      const demoIframe   = document.getElementById('demoIframe');
+      const VIDEO_SRC    = 'https://drive.google.com/file/d/1ZXO49VgD3pMfTRtArF0UttE5nTFwhVnGZk2fCps2UrU/preview?autoplay=1';
+
+      function openModal() {
+        demoIframe.src = VIDEO_SRC;
+        videoModal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal() {
+        demoIframe.src = '';
+        videoModal.classList.remove('open');
+        document.body.style.overflow = '';
+      }
+
+      watchDemoBtn.addEventListener('click', openModal);
+      videoClose.addEventListener('click', closeModal);
+      videoModal.addEventListener('click', e => { if (e.target === videoModal) closeModal(); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
       // CTA form
       const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyCftPYXUp-bEFzUTkOEZLBiHutz5wW1PrjXeIzP2jakop_sZIe2gBGmZE4tZvdQ23l/exec';
 
