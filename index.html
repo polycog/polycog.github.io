@@ -621,6 +621,9 @@
           max-width: 420px;
           margin: 0 auto;
           gap: 0;
+
+          flex-direction: column;
+          align-items: center;
         }
 
         .cta-input {
@@ -705,7 +708,7 @@
         polycog
       </a>
       <ul>
-        <li><a href="index.html#platform">Platform</a></li><li><a href="index.html#how">How It Works</a></li><li><a href="index.html#principles">Principles</a></li><li><a href="research.html">Research</a></li><li><a href="team.html">Team</a></li><li><a href="index.html#cta" class="nav-btn">Get Access</a></li>
+        <li><a href="index.html#platform">Platform</a></li><li><a href="index.html#how">How It Works</a></li><li><a href="index.html#principles">Principles</a></li><li><a href="research.html">Research</a></li><li><a href="team.html">Team</a></li><li><a href="https://docs.polycog.ai" target="_blank">Docs</a></li><li><a href="https://github.com/polycog/cognition" class="nav-btn" target="_blank">⭐ GitHub</a></li>
       </ul>
       <button class="nav-hamburger" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -714,7 +717,7 @@
 
     <!-- Mobile nav drawer -->
     <div class="nav-mobile" id="navMobile">
-      <a href="index.html#platform" class="nav-mobile-link">Platform</a><a href="index.html#how" class="nav-mobile-link">How It Works</a><a href="index.html#principles" class="nav-mobile-link">Principles</a><a href="research.html" class="nav-mobile-link">Research</a><a href="team.html" class="nav-mobile-link">Team</a><a href="index.html#cta" class="nav-btn">Get Access</a>
+      <a href="index.html#platform" class="nav-mobile-link">Platform</a><a href="index.html#how" class="nav-mobile-link">How It Works</a><a href="index.html#principles" class="nav-mobile-link">Principles</a><a href="research.html" class="nav-mobile-link">Research</a><a href="team.html" class="nav-mobile-link">Team</a><a href="https://docs.polycog.ai" class="nav-mobile-link">Docs</a><a href="https://github.com/polycog/cognition" class="nav-btn">⭐ GitHub</a>
     </div>
     <section id="hero">
         <div class="orb orb-1"></div>
@@ -735,10 +738,10 @@
             </p>
 
             <div class="hero-actions">
-                <a href="#cta" class="btn-primary">
-                Request Early Access
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                <a href="https://github.com/polycog/cognition" target="_blank" class="btn-primary">
+                <svg xmlns="http://w3.org" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4" />
+                  <path d="M9 18c-4.51 2-5-2-7-2" />
                 </svg>
                 </a>
 
@@ -748,9 +751,9 @@
                 </a> -->
 
                 <button class="btn-demo" id="watchDemoBtn">
-                  <svg class="play-icon" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                      <circle cx="8" cy="8" r="7" stroke="currentColor" stroke-width="1.2"/>
-                      <path d="M6.5 5.5l4 2.5-4 2.5V5.5z" fill="currentColor"/>
+                  <svg class="play-icon" width="16" height="24" viewBox="0 0 24 24" fill="none">
+                      <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.2"/>
+                      <path d="M9.75 8.25l6 3.75-6 3.75V8.25z" fill="currentColor"/>
                   </svg>
                   Watch Demo
                 </button>
@@ -1035,12 +1038,13 @@
     <section id="cta">
       <div class="container">
         <div class="cta-box reveal">
-          <div class="label" style="justify-content:center; margin-bottom:24px;">Early Access</div>
+          <div class="label" style="justify-content:center; margin-bottom:24px;">Contact</div>
           <h2>Build agents you can trust</h2>
-          <p>We're working with a small cohort of teams building production agent systems. Ping us and we'll reach out.</p>
-          <form class="cta-form" onsubmit="handleSubmit(event)">
-            <input class="cta-input" type="email" id="email-input" placeholder="you@company.com" autocomplete="email" />
-            <button class="cta-submit" type="submit">Request Access</button>
+          <p>Let's team up to enable your cognitive agents.<br />Ping us and we'll reach out.</p>
+          <form class="cta-form">
+            <!-- <input class="cta-input" type="email" id="email-input" placeholder="you@company.com" autocomplete="email" /> -->
+            <!-- <button class="cta-submit">Request Access</button> -->
+             <button class="cta-submit" id="emailBtn" type="button">Say Hello!!<br /><span style="font-size: 8px">hello@polycog.ai</span></button>
           </form>
           <p id="form-msg"></p>
         </div>
@@ -1117,74 +1121,21 @@
       videoModal.addEventListener('click', e => { if (e.target === videoModal) closeModal(); });
       document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
-      // CTA form
-      const SHEET_URL = 'https://script.google.com/macros/s/AKfycbyCftPYXUp-bEFzUTkOEZLBiHutz5wW1PrjXeIzP2jakop_sZIe2gBGmZE4tZvdQ23l/exec';
+      document.getElementById('emailBtn').addEventListener('click', function (e) {
+        event.preventDefault();
 
-      function handleSubmit(e){
-        e.preventDefault();
-        const input = document.getElementById('email-input');
-        const val = input.value.trim();
-        const msg = document.getElementById('form-msg');
-        const btn = e.target.querySelector('.cta-submit');
+        const to = 'hello@polycog.ai';
+        const subject = 'Hello Polycog';
+        const body = "Hi,\n\nI wanted to reach out about...";
 
-        if(!val.includes('@')){ msg.style.color='#f87171'; msg.textContent='Please enter a valid email address.'; return; }
+        const mailto = `mailto:${to}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+        //const mailto = `mailto:${to}`;
+        //alert(mailto);
+        window.location.href = mailto;
+        //window.open(mailto);
 
-        btn.disabled = true;
-        btn.textContent = 'Sending…';
-        msg.textContent = '';
-
-        fetch(SHEET_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: 'email=' + encodeURIComponent(val)
-        })
-        .then(() => {
-          msg.style.color = 'var(--accent)';
-          msg.textContent = '→ Received. We\'ll be in touch shortly.';
-          input.value = '';
-          btn.disabled = false;
-          btn.textContent = 'Request Access';
-        })
-        .catch(() => {
-          msg.style.color = '#f87171';
-          msg.textContent = 'Something went wrong. Please try again.';
-          btn.disabled = false;
-          btn.textContent = 'Request Access';
-        });
-      }
-
-      function focusOnHash() {
-        if (window.location.hash === '#cta') {
-          const inputElement = document.getElementById('email-input');
-          if (inputElement) {
-            inputElement.blur();
-            inputElement.focus();
-          }
-        }
-      }
-
-      // Run on initial page load
-      window.addEventListener('DOMContentLoaded', focusOnHash);
-
-      // Run if the hash changes without a full page reload
-      window.addEventListener('hashchange', focusOnHash);
-      
-      const email_observer = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-          // Check if the element is currently visible in the viewport
-          if (entry.isIntersecting) {
-            // Set focus to the input
-            entry.target.focus();
-            // Optional: Stop observing after focusing once
-            // observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 1.0 // Trigger only when 100% of the input is visible
+        return false;
       });
-
-      email_observer.observe(document.getElementById('email-input'));
 
     </script>
   </body>
