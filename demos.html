@@ -208,6 +208,49 @@
           .advisors-section { padding: 0 24px 80px; }
           .advisors-grid { grid-template-columns: 1fr; }
         }
+
+        .flow__arrow {
+          margin: 0 .35em;
+          color: var(--cog-primary, #7b2fbe);
+          opacity: .7;
+        }
+
+        .cog-badge {
+          --cog-primary: #7b2fbe;
+          --cog-accent:  #c47d20;
+          --cog-tint:    #f3effa;
+          box-shadow: 0 0 0 1px rgba(123, 47, 190, .22);
+          display: inline-flex;
+          align-items: stretch;
+          font: inherit;
+          font-size: .70rem;
+          line-height: 1;
+          border-radius: 8px;
+          overflow: hidden;
+          vertical-align: middle;
+          text-decoration: none;
+        }
+        .cog-badge__label {
+          display: inline-flex;
+          align-items: center;
+          gap: .4em;
+          padding: .4em .7em .4em .55em;
+          background: var(--cog-tint);
+          color: var(--cog-primary);
+        }
+        .cog-badge__value {
+          display: inline-flex;
+          align-items: center;
+          padding: .4em .7em;
+          background: var(--cog-primary);
+          color: #fff;
+          font-weight: 600;
+        }
+        .cog-badge svg {
+          width: 1.15em;
+          height: 1.15em;
+          flex: none;
+        }
     </style>
 
 
@@ -249,9 +292,32 @@
         <div class="label">Demos</div>
         <h1>Reasoning Agents</h1>
         <p class="page-lead">
-            Observable + Explainable + Safe
+            Reliability + Steerability + Explainability <span class="flow__arrow" aria-hidden="true">&rarr;</span> Trustworthy
             <br />
-            <img src="https://img.shields.io/badge/cognition-inside-7b2fbe?labelColor=f3effa&logo=data%3Aimage%2Fsvg%2Bxml%3Bbase64%2CPHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjIgMCAzNiAzNiIgZmlsbD0ibm9uZSI%2BPHBvbHlnb24gcG9pbnRzPSIyMCw0IDM0LjMsMTQuNCAyOC44LDMxLjYgMTEuMiwzMS42IDUuNywxNC40IiBzdHJva2U9IiM3YjJmYmUiIHN0cm9rZS13aWR0aD0iMi4yIi8%2BPGcgc3Ryb2tlPSIjYzQ3ZDIwIiBzdHJva2Utd2lkdGg9IjIiPjxsaW5lIHgxPSIyMCIgeTE9IjIwIiB4Mj0iMjAiIHkyPSI0Ii8%2BPGxpbmUgeDE9IjIwIiB5MT0iMjAiIHgyPSIzNC4zIiB5Mj0iMTQuNCIvPjxsaW5lIHgxPSIyMCIgeTE9IjIwIiB4Mj0iMjguOCIgeTI9IjMxLjYiLz48bGluZSB4MT0iMjAiIHkxPSIyMCIgeDI9IjExLjIiIHkyPSIzMS42Ii8%2BPGxpbmUgeDE9IjIwIiB5MT0iMjAiIHgyPSI1LjciIHkyPSIxNC40Ii8%2BPC9nPjxnIGZpbGw9IiM3YjJmYmUiPjxjaXJjbGUgY3g9IjIwIiBjeT0iNCIgcj0iMy4yIi8%2BPGNpcmNsZSBjeD0iMzQuMyIgY3k9IjE0LjQiIHI9IjMuMiIvPjxjaXJjbGUgY3g9IjI4LjgiIGN5PSIzMS42IiByPSIzLjIiLz48Y2lyY2xlIGN4PSIxMS4yIiBjeT0iMzEuNiIgcj0iMy4yIi8%2BPGNpcmNsZSBjeD0iNS43IiBjeT0iMTQuNCIgcj0iMy4yIi8%2BPC9nPjxjaXJjbGUgY3g9IjIwIiBjeT0iMjAiIHI9IjQuNiIgZmlsbD0iI2M0N2QyMCIvPjwvc3ZnPgo%3D"></img>
+              <span class="cog-badge" role="img" aria-label="Cognition inside" style="margin-top: 10px;">
+                <span class="cog-badge__label">
+                  <svg viewBox="0 0 36 36" fill="none" aria-hidden="true">
+                    <polygon points="20,4 34.3,14.4 28.8,31.6 11.2,31.6 5.7,14.4" stroke="currentColor" stroke-width="2.2"/>
+                    <g stroke="var(--cog-accent)" stroke-width="2">
+                      <line x1="20" y1="20" x2="20" y2="4"/>
+                      <line x1="20" y1="20" x2="34.3" y2="14.4"/>
+                      <line x1="20" y1="20" x2="28.8" y2="31.6"/>
+                      <line x1="20" y1="20" x2="11.2" y2="31.6"/>
+                      <line x1="20" y1="20" x2="5.7" y2="14.4"/>
+                    </g>
+                    <g fill="currentColor">
+                      <circle cx="20" cy="4" r="3.2"/>
+                      <circle cx="34.3" cy="14.4" r="3.2"/>
+                      <circle cx="28.8" cy="31.6" r="3.2"/>
+                      <circle cx="11.2" cy="31.6" r="3.2"/>
+                      <circle cx="5.7" cy="14.4" r="3.2"/>
+                    </g>
+                    <circle cx="20" cy="20" r="4.6" fill="var(--cog-accent)"/>
+                  </svg>
+                  cognition
+                </span>
+                <span class="cog-badge__value">inside</span>
+              </span>
             <br />
             
         </p>
@@ -271,7 +337,7 @@
 
         <p>
           
-              A neurosymbolic validator for legal eligibility: an LLM reads court notes as asserted facts and legal rules decide eligibility by deduction in code.
+              A neurosymbolic validator for legal eligibility: an LLM reads court notes as asserted facts, and legal rules decide eligibility by deduction in code.
           
           </p>
         <p>&nbsp;</p>
@@ -305,7 +371,7 @@
       <a href="https://github.com/polycog/demo-incident-triage" target="_blank" rel="noopener noreferrer" class="team-card reveal d2">
         
         <div>
-          <div class="founder-role">Education</div>
+          <div class="founder-role">Administration</div>
           <h2>Student Injury Triage<br /> Assistant</h2>
         </div>
 
@@ -348,13 +414,13 @@
       <a href="https://github.com/polycog/demo-logistics-tech" target="_blank" rel="noopener noreferrer" class="team-card reveal d3">
         
         <div>
-          <div class="founder-role">Business</div>
+          <div class="founder-role">Transportation</div>
           <h2>Logistics Support<br /> Assistant</h2>
         </div>
 
         <p>
           
-              A neurosymbolic agent that conversationally maintains a knowledge graph & plans optimal delivery-cost estimates in real time.
+              A neurosymbolic agent to estimate transportation costs; an LLM converses with a human operator, and a symbolic world graph reasoner & planner estimate costs in real time.
           
           </p>
         <p>&nbsp;</p>
