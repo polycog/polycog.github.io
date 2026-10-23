@@ -156,11 +156,11 @@
         }
 
         .hero-sub {
-          font-size: .85rem;
+          font-size: .9rem;
           font-weight: 300;
           line-height: 1.85;
           color: var(--text-2);
-          max-width: 540px;
+          max-width: 640px;
           margin: 0 auto 44px;
           opacity: 0;
           animation: fadeUp .85s .4s var(--ease) forwards;
@@ -857,10 +857,7 @@
             <h1>Build trustworthy <em>agents &nbsp;</em><!--that <em>think &nbsp;</em>--></h1>
 
             <p class="hero-sub">
-                Polycog develops the <strong>reasoning foundation</strong> for agents &mdash;
-                composable neuro-symbolic reasoning primitives, orchestration directives,
-                and built-in <strong>reliability, steerability, & explainability</strong> - all
-                centered around a persistent knowledge graph that describes reality.
+                We are developing the neurosymbolic reasoning foundation for autonomous agents - a System 2 harness for thinking deliberately with System 1 models.
             </p>
 
             <div class="hero-actions">
@@ -1167,7 +1164,7 @@
             </h2>
           </div>
           <p class="section-lead">
-            Use Polycog's software framework to upgrade your existing agent loop. Works with any model.<br />
+            Use Polycog's software framework - cognition - to build your agent harness. Works with any model.
             Deploy it as you like - we are not a captive platform.
           </p>
         </div>
@@ -1372,7 +1369,7 @@
       document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
 
       document.getElementById('emailBtn').addEventListener('click', function (e) {
-        event.preventDefault();
+        e.preventDefault();
 
         const to = 'hello@polycog.ai';
         const subject = 'Hello Polycog';
