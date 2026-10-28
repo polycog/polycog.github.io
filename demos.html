@@ -28,6 +28,7 @@
 
     <link rel="stylesheet" href="css/variables.css" />
     <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/media-modal.css" />
     <style>
         /* team grid */
         .team-section {
@@ -251,7 +252,38 @@
           height: 1.15em;
           flex: none;
         }
+
+
+        /* card use-case button: takes the place of the card's spacer <p>, centered between description and tags */
+        .team-card:has(> .usecase-btn) > p { flex: none; }
+        .usecase-btn {
+            align-self: flex-start;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font: inherit;
+            font-size: .65rem;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+            color: var(--accent);
+            background: none;
+            border: none;
+            padding: 4px 0; /* breathing room above/below; margin-block stays auto for centering */
+            white-space: nowrap;
+            cursor: pointer;
+        }
+        .usecase-btn .arr { transition: transform .25s var(--ease); }
+        .usecase-btn:hover .arr,
+        .usecase-btn:focus-visible .arr { transform: translateX(4px); }
+        .usecase-btn:focus-visible { outline: 1px solid var(--accent); outline-offset: -4px; }
+
+        /* .usecase-btn ~ p { display: none; } */
+        .usecase-btn:first-of-type { margin-top: 10px; }
+        .usecase-btn:last-of-type { margin-bottom: auto; }
+        .usecase-btn + .usecase-btn { margin-top: -12px; }
     </style>
+
+    <script src="js/media-modal.js"></script>
 
 
     <style>
@@ -327,19 +359,29 @@
       <div class="team-grid">
           
           
-      
       <a href="https://github.com/polycog/demo-legal-tech" target="_blank" rel="noopener noreferrer" class="team-card reveal d1">
         
         <div>
-          <div class="founder-role">Law</div>
-          <h2>Special Immigrant Juvenile<br /> (SIJ) Validator</h2>
+          <div class="founder-role">Legal Tech</div>
+          <h2>Document Validation</h2>
         </div>
 
         <p>
           
-              A neurosymbolic validator for legal eligibility: an LLM reads court notes as asserted facts, and legal rules decide eligibility by deduction in code.
+              The neurosymbolic document validator reads the case facts and court notes of an immigration case and decides whether the applicant qualifies for a specific status under the law.
           
           </p>
+        
+        <button type="button" class="usecase-btn" data-href="https://github.com/polycog/demo-legal-tech/blob/main/docs/usecase.md">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 1.5H4A1.5 1.5 0 0 0 2.5 3v10A1.5 1.5 0 0 0 4 14.5h8a1.5 1.5 0 0 0 1.5-1.5V5.5z"/><path d="M9.5 1.5v4h4M5.5 8.5h5M5.5 11h3.5"/></svg>
+            Use Case
+            <span class="arr">→</span>
+          </button><button type="button" class="usecase-btn" data-href="https://github.com/polycog/demo-legal-tech/blob/main/docs/approach.md">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 1.5H4A1.5 1.5 0 0 0 2.5 3v10A1.5 1.5 0 0 0 4 14.5h8a1.5 1.5 0 0 0 1.5-1.5V5.5z"/><path d="M9.5 1.5v4h4M5.5 8.5h5M5.5 11h3.5"/></svg>
+            Tech Design
+            <span class="arr">→</span>
+          </button>
+        
         <p>&nbsp;</p>
 
         <div class="exp-tags">
@@ -362,24 +404,42 @@
             <path d="M9 18c-4.51 2-5-2-7-2" />
           </svg>
           Repo
+        
+          <button type="button" class="media-btn" data-media="video" data-src="https://drive.google.com/file/d/14jnK5VI7ICHNg4FS9kUgCo29eMzOwxG5/preview?autoplay=1">
+            
+            <svg width="11" height="11" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1.5v11l9.5-5.5z"/></svg>
+            Watch
+            
+          </button>
+        
         </div>
       </a>
 
           
           
-      
       <a href="https://github.com/polycog/demo-incident-triage" target="_blank" rel="noopener noreferrer" class="team-card reveal d2">
         
         <div>
-          <div class="founder-role">Administration</div>
-          <h2>Student Injury Triage<br /> Assistant</h2>
+          <div class="founder-role">Ed Ops</div>
+          <h2>Student Injury Triage</h2>
         </div>
 
         <p>
           
-              A neurosymbolic, interactive assistant that guides staff through student injury policy: an LLM interprets what happened, and code decides the next step.
+              The neurosymbolic agent helps K-12 school staff follow a student injury policy in real time: staff describe an incident as it happens, and the agent determines the triage tier, gives the required next step, and tracks progress through the policy's checklist and deadlines.
           
           </p>
+        
+        <button type="button" class="usecase-btn" data-href="https://github.com/polycog/demo-incident-triage/blob/main/docs/usecase.md">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 1.5H4A1.5 1.5 0 0 0 2.5 3v10A1.5 1.5 0 0 0 4 14.5h8a1.5 1.5 0 0 0 1.5-1.5V5.5z"/><path d="M9.5 1.5v4h4M5.5 8.5h5M5.5 11h3.5"/></svg>
+            Use Case
+            <span class="arr">→</span>
+          </button><button type="button" class="usecase-btn" data-href="https://github.com/polycog/demo-incident-triage/blob/main/docs/approach.md">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 1.5H4A1.5 1.5 0 0 0 2.5 3v10A1.5 1.5 0 0 0 4 14.5h8a1.5 1.5 0 0 0 1.5-1.5V5.5z"/><path d="M9.5 1.5v4h4M5.5 8.5h5M5.5 11h3.5"/></svg>
+            Tech Design
+            <span class="arr">→</span>
+          </button>
+        
         <p>&nbsp;</p>
 
         <div class="exp-tags">
@@ -405,24 +465,42 @@
             <path d="M9 18c-4.51 2-5-2-7-2" />
           </svg>
           Repo
+        
+          <button type="button" class="media-btn" data-media="video" data-src="https://drive.google.com/file/d/1LSy0GMOcpanyjX-ScRHjvEYihpc7BRKN/preview?autoplay=1">
+            
+            <svg width="11" height="11" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1.5v11l9.5-5.5z"/></svg>
+            Watch
+            
+          </button>
+        
         </div>
       </a>
 
           
           
-      
       <a href="https://github.com/polycog/demo-logistics-tech" target="_blank" rel="noopener noreferrer" class="team-card reveal d3">
         
         <div>
-          <div class="founder-role">Transportation</div>
-          <h2>Logistics Support<br /> Assistant</h2>
+          <div class="founder-role">Freight Tech</div>
+          <h2>Logistics Support</h2>
         </div>
 
         <p>
           
-              A neurosymbolic agent to estimate transportation costs; an LLM converses with a human operator, and a symbolic world graph reasoner & planner estimate costs in real time.
+              The neurosymbolic logistics support agent helps a small-fleet cargo carrier quote delivery prices - the carrier dispatcher describes a shipment in plain language, and the agent works out the quote given the carrier's fleet, routes, labor rates, and fuel prices, and replies with a step-by-step estimate.
           
           </p>
+        
+        <button type="button" class="usecase-btn" data-href="https://github.com/polycog/demo-logistics-tech/blob/main/docs/usecase.md">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 1.5H4A1.5 1.5 0 0 0 2.5 3v10A1.5 1.5 0 0 0 4 14.5h8a1.5 1.5 0 0 0 1.5-1.5V5.5z"/><path d="M9.5 1.5v4h4M5.5 8.5h5M5.5 11h3.5"/></svg>
+            Use Case
+            <span class="arr">→</span>
+          </button><button type="button" class="usecase-btn" data-href="https://github.com/polycog/demo-logistics-tech/blob/main/docs/approach.md">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 1.5H4A1.5 1.5 0 0 0 2.5 3v10A1.5 1.5 0 0 0 4 14.5h8a1.5 1.5 0 0 0 1.5-1.5V5.5z"/><path d="M9.5 1.5v4h4M5.5 8.5h5M5.5 11h3.5"/></svg>
+            Tech Design
+            <span class="arr">→</span>
+          </button>
+        
         <p>&nbsp;</p>
 
         <div class="exp-tags">
@@ -451,24 +529,42 @@
             <path d="M9 18c-4.51 2-5-2-7-2" />
           </svg>
           Repo
+        
+          <button type="button" class="media-btn" data-media="video" data-src="https://drive.google.com/file/d/1KbiW5nJUbtehfRNWvjA9JTc0np8MuhKm/preview?autoplay=1">
+            
+            <svg width="11" height="11" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1.5v11l9.5-5.5z"/></svg>
+            Watch
+            
+          </button>
+        
         </div>
       </a>
 
           
           
-      
       <a href="https://github.com/polycog/demo-payment" target="_blank" rel="noopener noreferrer" class="team-card reveal d1">
         
         <div>
-          <div class="founder-role">Finance</div>
-          <h2>Payments Support<br />Assistant</h2>
+          <div class="founder-role">Fin Tech</div>
+          <h2>Payments Support</h2>
         </div>
 
         <p>
           
-              A neurosymbolic, interactive assistant for payments; an LLM manages the conversation, a symbolic decision process enforces a bank's policy.
+              The neurosymbolic payments assistant conversationally verifies the customer, shows their payment plan, and helps them change the amount, date or payment card, authenticating them with the method the bank requires.
           
           </p>
+        
+        <button type="button" class="usecase-btn" data-href="https://github.com/polycog/demo-payment/blob/main/docs/usecase.md">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 1.5H4A1.5 1.5 0 0 0 2.5 3v10A1.5 1.5 0 0 0 4 14.5h8a1.5 1.5 0 0 0 1.5-1.5V5.5z"/><path d="M9.5 1.5v4h4M5.5 8.5h5M5.5 11h3.5"/></svg>
+            Use Case
+            <span class="arr">→</span>
+          </button><button type="button" class="usecase-btn" data-href="https://github.com/polycog/demo-payment/blob/main/docs/approach.md">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9.5 1.5H4A1.5 1.5 0 0 0 2.5 3v10A1.5 1.5 0 0 0 4 14.5h8a1.5 1.5 0 0 0 1.5-1.5V5.5z"/><path d="M9.5 1.5v4h4M5.5 8.5h5M5.5 11h3.5"/></svg>
+            Tech Design
+            <span class="arr">→</span>
+          </button>
+        
         <p>&nbsp;</p>
 
         <div class="exp-tags">
@@ -494,6 +590,14 @@
             <path d="M9 18c-4.51 2-5-2-7-2" />
           </svg>
           Repo
+        
+          <button type="button" class="media-btn" data-media="video" data-src="https://drive.google.com/file/d/1-BZmGtRpowki8eMzQMdGZUuYepCaSUcr/preview?autoplay=1">
+            
+            <svg width="11" height="11" viewBox="0 0 14 14" fill="currentColor"><path d="M3 1.5v11l9.5-5.5z"/></svg>
+            Watch
+            
+          </button>
+        
         </div>
       </a>
       </div>
